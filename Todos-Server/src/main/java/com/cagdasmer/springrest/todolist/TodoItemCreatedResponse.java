@@ -1,13 +1,13 @@
 package com.cagdasmer.springrest.todolist;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class TodoItemCreatedResponse {
     private String id;
     private String name;
+    
+    public TodoItemCreatedResponse() {}
 
     public TodoItemCreatedResponse(String id, String name) {
         this.id = id;

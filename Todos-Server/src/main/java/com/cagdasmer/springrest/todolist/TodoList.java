@@ -17,7 +17,6 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
 @Table(name="todo_list")
 public class TodoList {
 
@@ -40,6 +39,8 @@ public class TodoList {
                 ", name='" + name + '\'' +
                 '}';
     }
+    
+    public TodoList() {}
     
     public TodoList(String name) {
 		this.name = name;

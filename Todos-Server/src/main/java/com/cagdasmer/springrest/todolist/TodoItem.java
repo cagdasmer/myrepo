@@ -4,14 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.cagdasmer.springrest.todolist.TodoList;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @ToString(exclude = {"list"})
 @Table(name="todo_item")
 public class TodoItem {
@@ -26,6 +24,8 @@ public class TodoItem {
     @JoinColumn(name = "TODO_LIST_ID", insertable = true, updatable = true)
     @JsonIgnore
     private TodoList list;
+    
+    public TodoItem() {}
     
     public TodoItem(String name, TodoList list) {
         this.name = name;
