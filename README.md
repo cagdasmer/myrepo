@@ -82,7 +82,7 @@ $ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sour
 <code>10. $ yarn start</code><br/><br/>
 
 <h2 style="text-decoration: underline">Known Issues</h2>
-<p>1. Once all the items are deleted from a list, newly added items do not show up until the page is refreshed. 
+<p>1. Once an item is deleted from a list, newly added items do not show up until the page is refreshed. 
 I'm not yet aware of the exact reason of this issue.</p>
 <p>2. Once a new to-do list is created, the completion filters will not work on newly added items until the checkboxes are ticked once.<br />
 This is because the newly added items' initial values are null/undefined and they are treated as uncontrolled components. 
