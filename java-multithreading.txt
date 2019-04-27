@@ -1,0 +1,114 @@
+Complexity arises when threads need to communicate with each other. (Deadlock)
+A thread is essentially a task, a task will have its own overwritten run method to perform the required functionality
+A thread is run by calling its .start() method. Can't start a thread twice
+  Solution: create a new instance and kick that off.
+ 
+Pause execution for a specified period of time with .sleep(ms)
+	Throws InterruptedException
+	
+Can find out the thread that executed a specific line by using .getName()
+	ex: Thread.currentThread().getName();
+  and set it with .setName()
+  
+A thread has to extend Thread class in order to achieve multi-threading
+
+Thread synchronization
+  Atomicity allows for a block of code to be not interrupted before it finishes execution.
+  Achieved with public synchronized int methodName () {...}
+	or synchronized(this) { ...block of code... }
+	
+
+	////////////////
+public class Application {
+
+    public static void main(String[] args) {
+	 System.out.println("Main thread...");
+
+	 //Synchronization
+        Sequence sequence = new Sequence();
+
+        for(int i = 0; i <100; i++){
+            System.out.println(sequence.getNext());
+        }
+
+
+	 /*Task taskRunner = new Task();
+	 taskRunner.start();
+
+        // Inline Thread
+        System.out.println("Starting thread 2");
+        Thread t1 = new Thread(new RunnableTask());
+        t1.start();
+
+        // Option 3
+        *//*Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i=0; i < 1000; i++){
+                    System.out.println("number: " + i);
+                }
+            }
+        });*/
+    }
+}
+
+class Task extends Thread {
+    public void run(){
+        for(int i=0; i < 1000; i++){
+            System.out.println("number: " + i);
+        }
+    }
+}
+
+class RunnableTask implements Runnable {
+    public void run(){
+        for(int i=0; i < 1000; i++){
+            System.out.println("number: " + i);
+        }
+    }
+}
+____________________________________________________________________________________
+
+JUnit Testing
+	Unit is typically a method, so a unit test will test one method
+	Each test method should be self contained, not depending one another
+	Method names should give an indication about what condition is being tested
+		- multiple condition : first_second
+		
+	Sometimes unit tests can be a part of the production build and not run manually
+	
+	Test Setup Flow
+		1.Select & highlight classname, right click ==> create tests
+		2.Select JUnit, click fix, then download lib
+		3.Select the methods to be tested
+		4.Project structure -> modules -> dependencies -> Junit : Test ==> Compile
+		5. Right click ==> Create test for bankAccount, click OK
+		
+	JUnit fail method takes a string parameter and reports when a test fails
+		fail("param");
+	
+	Each test method has to be annotated with @org.junit.Test
+	
+	beforeEach(){...} =~ @Before
+	@BeforeClass : is run once for setup, method has to be static
+	@AfterClass : is run once after for cleanup, method has to be static
+	
+	assertEqual(expected, actual) ~= expect().toEqual()
+	assertTrue("info message if not passed", method())
+	assertNotEquals()
+	assertArrayEquals() : verify the value of an array
+	assertNull() & assertNotNull()
+	assertThat() : compares an actual actual value against a JUnit matcher. 
+		More powerful because can compare against a range of values
+		
+	The order of the output of the print statements does not reflect execution order.
+	  They are spooled
+	  
+  Parameterized Testing
+    @RunWith(@Parameterized.class)
+	public myTestClass
+	
+	@Parameterized.Parameters
+	public static Collection<Object> conditions(
+		return an array of parameters }
+	
